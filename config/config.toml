@@ -6,7 +6,7 @@ bash = true
 builtin = "history-watch"
 
 [bootstrap.macos.launchd.agents.iron-proxy]
-program = "~/.local/bin/mise"
+program = "/Users/georges-studio/.local/bin/mise"
 args = [
   "-E", "iron",
   "exec", "--",
@@ -26,8 +26,5 @@ gum = "latest"
 mkcert = "latest"
 
 [dotfiles]
+"~/.config/iron-proxy" = { mode = "track" }
 "~/.config/mise" = { mode = "track" }
-# iron-proxy is deployed from this config dir rather than tracked in place: config.yaml is
-# rendered per machine (Tailscale IP, $HOME), so the rendered output must not be shared.
-"~/.config/iron-proxy/config.yaml" = { source = "dotfiles/iron-proxy/config.yaml.tera", mode = "template" }
-"~/.config/iron-proxy/iron-ca.cnf" = { source = "dotfiles/iron-proxy/iron-ca.cnf", mode = "copy", permissions = "0600" }
