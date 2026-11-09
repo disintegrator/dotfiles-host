@@ -1,0 +1,33 @@
+[bootstrap.mise_shell_activate]
+zsh = true
+bash = true
+
+[bootstrap.services.mise-history]
+builtin = "history-watch"
+
+[bootstrap.macos.launchd.agents.iron-proxy]
+program = "~/.local/bin/mise"
+args = [
+  "-E", "iron",
+  "exec", "--",
+  "iron-proxy", "-config", "{{ config_root }}/.config/iron-proxy/config.yaml",
+]
+run_at_load = true
+keep_alive = true
+throttle_interval = 5
+working_directory = "~"
+stdout_path = "~/Library/Logs/iron-proxy.log"
+stderr_path = "~/Library/Logs/iron-proxy.err.log"
+
+[tools]
+gh = "latest"
+"github:paradigmxyz/iron-proxy" = "latest"
+gum = "latest"
+mkcert = "latest"
+
+[dotfiles]
+"~/.config/mise" = { mode = "track" }
+# iron-proxy is deployed from this config dir rather than tracked in place: config.yaml is
+# rendered per machine (Tailscale IP, $HOME), so the rendered output must not be shared.
+"~/.config/iron-proxy/config.yaml" = { source = "dotfiles/iron-proxy/config.yaml.tera", mode = "template" }
+"~/.config/iron-proxy/iron-ca.cnf" = { source = "dotfiles/iron-proxy/iron-ca.cnf", mode = "copy", permissions = "0600" }
