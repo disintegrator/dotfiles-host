@@ -37,8 +37,10 @@ transforms:
             proxy_value: "__secret_github_token"
             match_headers: ["Authorization"]
           rules:
-            - host: "api.github.com"
-            - host: "github.com"
+            # glob covers github.com itself plus api., uploads., codeload., ...
+            - host: "*.github.com"
+            # raw. and objects. (LFS / release assets)
+            - host: "*.githubusercontent.com"
 
         - source:
             type: env
