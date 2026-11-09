@@ -6,19 +6,11 @@
       "autosave": true,
       "encrypt": false,
       "variants": []
-    },
-    {
-      "path": "home/.config/iron-proxy",
-      "autosave": true,
-      "encrypt": false,
-      "variants": []
     }
   ],
   "exclude": [],
   "recipients": [],
   "permissions": {
-    "config/tasks/bootstrap.sh": 484,
-    "home/.config": 448,
-    "home/.config/iron-proxy/iron-ca.cnf": 384
+    "config/tasks/bootstrap.sh": 484
   }
 }
