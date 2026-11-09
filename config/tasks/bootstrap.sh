@@ -66,6 +66,12 @@ cat <<'EOF' | gum format --type markdown
 
 1. Install Tailscale: https://tailscale.com/download
 2. Log in
+3. Re-render the iron-proxy config with this machine's Tailscale IP and restart it:
+
+  ```sh
+  mise dot apply
+  launchctl kickstart -k gui/$(id -u)/dev.mise.iron-proxy
+  ```
 
 ## Virtual machine
 
