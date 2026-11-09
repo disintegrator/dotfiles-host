@@ -38,6 +38,7 @@ transforms:
             match_headers: ["Authorization"]
           rules:
             - host: "api.github.com"
+            - host: "github.com"
 
         - source:
             type: env
