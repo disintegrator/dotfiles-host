@@ -10,7 +10,5 @@
   ],
   "exclude": [],
   "recipients": [],
-  "permissions": {
-    "config/tasks/bootstrap.sh": 484
-  }
+  "permissions": {}
 }

@@ -1,42 +1,22 @@
-min_version = "2026.11.14"
+[settings]
+pin = true
+minimum_release_age_excludes = [
+  "eza",
+  "gem:terminal-notifier",
+  "github:ogulcancelik/herdr",
+  "mkcert",
+  "ruby",
+]
+
 
 [settings.ruby]
 compile = false
 
-[bootstrap.mise_shell_activate]
-zsh = true
-bash = true
-
-[bootstrap.services.mise-history]
-builtin = "history-watch"
-
-[bootstrap.macos.launchd.agents.iron-proxy]
-program = "~/.local/bin/mise"
-args = [
-  "-E", "iron",
-  "exec", "--",
-  "iron-proxy", "-config", "{{ config_root }}/.config/iron-proxy/config.yaml",
-]
-run_at_load = true
-keep_alive = true
-throttle_interval = 5
-working_directory = "~"
-stdout_path = "~/Library/Logs/iron-proxy.log"
-stderr_path = "~/Library/Logs/iron-proxy.err.log"
-# launchd's default soft limit of 256 open files is too low for a proxy that
-# holds a connection per client request plus one upstream.
-soft_resource_limits = { number_of_files = 10240 }
-hard_resource_limits = { number_of_files = 65536 }
-
 [tools]
-gh = "latest"
-"github:paradigmxyz/iron-proxy" = "latest"
-gum = "latest"
+eza = "0.23.5"
+"gem:terminal-notifier" = "3.1.0"
+"github:ogulcancelik/herdr" = "0.9.5"
+go = "1.27.3"
 mkcert = "latest"
-
-[dotfiles]
-"~/.config/mise" = { mode = "track" }
-# iron-proxy is deployed from this config dir rather than tracked in place: config.yaml is
-# rendered per machine (Tailscale IP, $HOME), so the rendered output must not be shared.
-"~/.config/iron-proxy/config.yaml" = { source = "dotfiles/iron-proxy/config.yaml.tera", mode = "template" }
-"~/.config/iron-proxy/iron-ca.cnf" = { source = "dotfiles/iron-proxy/iron-ca.cnf", mode = "copy", permissions = "0600" }
+ruby = "4.0.7"
+uv = "0.13.5"
