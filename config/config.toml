@@ -20,6 +20,10 @@ throttle_interval = 5
 working_directory = "~"
 stdout_path = "~/Library/Logs/iron-proxy.log"
 stderr_path = "~/Library/Logs/iron-proxy.err.log"
+# launchd's default soft limit of 256 open files is too low for a proxy that
+# holds a connection per client request plus one upstream.
+soft_resource_limits = { number_of_files = 10240 }
+hard_resource_limits = { number_of_files = 65536 }
 
 [tools]
 gh = "latest"
