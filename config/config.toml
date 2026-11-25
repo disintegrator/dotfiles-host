@@ -1,3 +1,5 @@
+min_version = "2026.11.14"
+
 [bootstrap.mise_shell_activate]
 zsh = true
 bash = true
