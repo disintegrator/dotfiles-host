@@ -1,5 +1,8 @@
 min_version = "2026.11.14"
 
+[settings.ruby]
+compile = false
+
 [bootstrap.mise_shell_activate]
 zsh = true
 bash = true
