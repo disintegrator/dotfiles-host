@@ -78,12 +78,12 @@ cat <<'EOF' | gum format --type markdown
 1. Install a virtual machine manager:
   - OrbStack: https://orbstack.dev/
   - VMPal: https://vmpal.com/
-2. Setup a Debian or Ubuntu LTS VM
+2. Set up an Ubuntu LTS VM
 3. Run the following in that VM
 
   ```sh
   curl -fsSL https://mise.run | sh
-  mise boostrap --adopt disintegrator/dotfiles-sandbox-debian
+  ~/.local/bin/mise bootstrap --adopt disintegrator/dotfiles-guest-ubuntu
   ```
 EOF
 
